@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="52a7aefc-35e5-4559-9535-394e50a90610" name="Changes" comment="exercise 1">
+      <change afterPath="$PROJECT_DIR$/../../.idea/INFO5100_002138509_YumengHuang.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/exercises.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/Building.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/Classroom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/Grade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/Homework.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/Instructor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/Printer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/Quiz.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise0/src/main/java/hym/TA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hym/FullTimeStudent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hym/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hym/PartTimeStudent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hym/Session.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hym/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise2/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise2/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise2/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise2/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise2/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise2/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise2/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise2/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2H8xTAkCHwssVBlVUlviPv2bWIA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hym.Main" />
+      <module name="exercise1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hym.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="52a7aefc-35e5-4559-9535-394e50a90610" name="Changes" comment="" />
+      <created>1667680518707</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667680518707</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="exercise 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="exercise 1" />
+  </component>
+</project>
