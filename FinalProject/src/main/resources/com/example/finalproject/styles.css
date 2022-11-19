@@ -1,0 +1,120 @@
+@font-face {
+    src: url(Roboto-Medium.ttf);
+}
+
+/* default class settings */
+
+.root {
+    -fx-focus-color: transparent;
+    -fx-font-family: 'Roboto';
+    -fx-box-border: null;
+}
+
+/* buttons */
+.button:hover {
+    -fx-cursor: hand;
+}
+
+/* titled-panes */
+.titled-pane > .title {
+    -fx-background-color: #376a2069;
+    -fx-padding: 10 10 10 10;
+    -fx-background-radius: 50;
+}
+
+.titled-pane:collapsed > .title {
+    -fx-background-color: #ebefe2;
+}
+
+.titled-pane > .title:hover,
+.titled-pane > .title:focus {
+    -fx-background-color: #376a2059;
+}
+
+.title-pane-property > .title > .arrow-button .arrow {
+    -fx-background-color: #191c18;
+}
+
+.titled-pane > *.content {
+    -fx-background-color: -fx-box-border, #ebefe2;
+    -fx-background-insets: 0, 0 1 1 1;
+    -fx-padding: 0.167em;
+}
+
+/* radio-buttons */
+.radio-button .radio {
+    -fx-background-color: #ebefe2;
+    -fx-border-color: #386a20;
+    -fx-border-radius: 50;
+}
+
+.radio-button:selected .radio .dot {
+    -fx-background-color: #386a20;
+    -fx-background-insets: 0;
+}
+
+/* split-pane */
+.split-pane:horizontal > .split-pane-divider {
+    -fx-padding: 1px;
+    -fx-background-color: #ebefe2;
+}
+
+.split-pane:vertical > .split-pane-divider {
+    -fx-padding: 1px;
+    -fx-background-color: #ebefe2;
+}
+
+/* self-named classes */
+.nav {
+    -fx-background-color: #ebefe2;
+    -fx-padding: 0 20 0 20;
+}
+
+.nav-header {
+    -fx-text-fill: #131f0d;
+    -fx-font-size: 24;
+    -fx-padding: 0 5 0 5;
+}
+
+.nav-open-button {
+    -fx-background-color: #386a20;
+    -fx-text-fill: white;
+    -fx-padding: 8 8 8 8;
+    -fx-background-radius: 50;
+}
+
+.nav-download-button {
+    -fx-background-color: #386a20;
+    -fx-text-fill: white;
+    -fx-padding: 8 8 8 8;
+    -fx-background-radius: 50;
+}
+
+.left-window {
+    -fx-background-color: #fdfdf6;
+}
+
+.upload-text {
+    -fx-text-fill: #191c18;
+    -fx-font-size: 24;
+}
+
+.upload-button {
+    -fx-background-color: #386a20;
+    -fx-text-fill: white;
+    -fx-padding: 10 10 10 10;
+    -fx-background-radius: 50;
+}
+
+.right-window {
+    -fx-background-color: #ebefe2;
+}
+
+.top-bottom-window {
+    -fx-background-color: #ebefe2;
+}
+
+.right-split-pane {
+    -fx-background-color: #ebefe2;
+}
+

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:controller="com.example.finalproject.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="body" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="1000.0" spacing="20.0" styleClass="nav">
+            <children>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="90.0" styleClass="nav-open-button" text="Open">
+                </Button>
+                <Button alignment="CENTER" disable="true" mnemonicParsing="false" prefWidth="90.0" styleClass="nav-download-button" text="Download">
+                </Button>
+            </children>
+        </HBox>
+        <SplitPane dividerPositions="0.7052139037433156" layoutY="50.0" prefHeight="750.0" prefWidth="1000.0" styleClass="main">
+            <items>
+                <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" styleClass="left-window">
+                    <children>
+                        <ImageView pickOnBounds="true" preserveRatio="true" />
+                        <VBox alignment="CENTER" layoutX="210.0" layoutY="300.0" spacing="20.0" styleClass="upload-dialog">
+                            <children>
+                                <Label contentDisplay="CENTER" styleClass="upload-text" text="Upload your image here">
+                                </Label>
+                                <Button mnemonicParsing="false" prefWidth="90.0" styleClass="upload-button" text="Open">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor></Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="right-window">
+                    <children>
+                        <SplitPane dividerPositions="0.24682395644283125" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="760.0" prefWidth="290.6666666666667" styleClass="right-split-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <items>
+                                <AnchorPane styleClass="top-right-window">
+                                    <children>
+                                        <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="204.66666666666666" prefWidth="288.6666666666667" styleClass="title-pane-property" text="Image Properties" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                                <VBox prefHeight="255.0" prefWidth="287.0" styleClass="title-pane-content" />
+                                            </content>
+                                        </TitledPane>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane minHeight="202.0" minWidth="-Infinity" prefHeight="202.0" prefWidth="289.0" styleClass="top-bottom-window">
+                                    <children>
+                                        <Accordion AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <panes>
+                                                <TitledPane alignment="CENTER" animated="false" text="Format">
+                                                    <content>
+                                                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.0">
+                                                            <children>
+                                                                <RadioButton mnemonicParsing="false" selected="true" styleClass="radio-button" text="JPG">
+                                                                    <toggleGroup>
+                                                                        <ToggleGroup fx:id="format" />
+                                                                    </toggleGroup>
+                                                                </RadioButton>
+                                                                <RadioButton mnemonicParsing="false" text="PNG" toggleGroup="$format" />
+                                                                <RadioButton mnemonicParsing="false" text="GIF" toggleGroup="$format" />
+                                                                <RadioButton mnemonicParsing="false" text="BMP" toggleGroup="$format" />
+                                                                <RadioButton mnemonicParsing="false" text="ODD" toggleGroup="$format" />
+                                                                <RadioButton mnemonicParsing="false" text="SVG" toggleGroup="$format" />
+                                                                <RadioButton mnemonicParsing="false" text="TIFF" toggleGroup="$format" />
+                                                            </children>
+                                                        </VBox>
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane alignment="CENTER" animated="false" text="Filter">
+                                                    <content>
+                                                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.0" styleClass="title-pane-content">
+                                                            <children>
+                                                                <RadioButton mnemonicParsing="false" text="Filter 1">
+                                                                    <toggleGroup>
+                                                                        <ToggleGroup fx:id="filter" />
+                                                                    </toggleGroup>
+                                                                </RadioButton>
+                                                                <RadioButton mnemonicParsing="false" text="Filter 2" toggleGroup="$filter" />
+                                                                <RadioButton mnemonicParsing="false" text="Filter 3" toggleGroup="$filter" />
+                                                            </children>
+                                                        </VBox>
+                                                    </content>
+                                                </TitledPane>
+                                            </panes>
+                                        </Accordion>
+                                    </children>
+                                </AnchorPane>
+                            </items>
+                        </SplitPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
