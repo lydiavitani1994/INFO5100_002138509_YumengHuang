@@ -42,7 +42,7 @@ public class Controller {
         // Display image in window
         imageView.setImage(image);
 
-        // Display image property in window
+        // TODO: Display image property in window
         Text property = new Text(imageView.imageProperty().toString());
         imageProperties.getChildren().add(property);
 
