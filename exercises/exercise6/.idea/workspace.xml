@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="92726213-e36b-4c4a-996c-f15f9338ac3e" name="Changes" comment="exercise 6">
       <change afterPath="$PROJECT_DIR$/../../FinalProject/.idea/FinalProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise5/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise5/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise5/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise5/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise5/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise5/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exercise5/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
@@ -23,17 +30,10 @@
       <change afterPath="$PROJECT_DIR$/../exercise8/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../exercise8/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../exercise8/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exercise8/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exercise8/src/main/java/hym/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exercise8/src/main/java/hym/BookInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exercise8/src/main/java/hym/BookShelf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exercise8/src/main/java/hym/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../exercise8/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../exercise8/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../exercise8/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../exercise8/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exercise8/src/main/resources/book_shelf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exercise8/src/main/resources/book_shelf.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../exercise8/src/main/resources/book_shelf.xsd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../exercise2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../exercise2/.idea/workspace.xml" afterDir="false" />
     </list>

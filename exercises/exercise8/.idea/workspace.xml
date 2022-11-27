@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9839550-7408-4513-9595-944217cc3ffe" name="Changes" comment="">
+    <list default="true" id="b9839550-7408-4513-9595-944217cc3ffe" name="Changes" comment="exercise 8">
       <change afterPath="$PROJECT_DIR$/../../FinalProject/.idea/FinalProject.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../exercise6/.idea/compiler.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../exercise6/.idea/encodings.xml" afterDir="false" />
@@ -23,17 +23,10 @@
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hym/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hym/BookInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hym/BookShelf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hym/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/book_shelf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/book_shelf.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/book_shelf.xsd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../exercise2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../exercise2/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -102,6 +95,14 @@
       <option name="presentableId" value="Default" />
       <updated>1668983590801</updated>
     </task>
+    <task id="LOCAL-00001" summary="exercise 8">
+      <created>1668992017074</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668992017074</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,5 +115,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="exercise 8" />
+    <option name="LAST_COMMIT_MESSAGE" value="exercise 8" />
   </component>
 </project>

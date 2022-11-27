@@ -115,7 +115,7 @@ public class HelloController {
                     break;
             }
 
-            if (resultType == 0){
+            if (resultType == 0 && (!op.getText().equals("/"))){
                 result.setText((int)resultDouble + "");
             }else{
                 if (op.getText().equals("-")){
