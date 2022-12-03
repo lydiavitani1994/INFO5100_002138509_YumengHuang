@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
-            prefWidth="1000.0" styleClass="body" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/16"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="body" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controller.Controller">
     <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="1000.0" spacing="20.0" styleClass="nav">
-        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openImageAction"
-                prefWidth="90.0" styleClass="nav-open-button" text="Open">
+        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openImageAction" prefWidth="90.0" styleClass="nav-open-button" text="Open">
         </Button>
-        <Button alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#navDownloadAction" prefWidth="90.0"
-                styleClass="nav-download-button" text="Download">
+        <Button alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#navDownloadAction" prefWidth="90.0" styleClass="nav-download-button" text="Download">
         </Button>
     </HBox>
-    <SplitPane dividerPositions="0.7052139037433156" layoutY="50.0" prefHeight="750.0" prefWidth="1000.0"
-               styleClass="main">
-        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0"
-                    styleClass="left-window">
-            <HBox fx:id="imageViewContainer"  alignment="CENTER" prefHeight="747.3333333333334" prefWidth="702.0" AnchorPane.bottomAnchor="0.0"
-                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.7052139037433156" layoutY="50.0" prefHeight="750.0" prefWidth="1000.0" styleClass="main">
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0" styleClass="left-window">
+            <HBox fx:id="imageViewContainer" alignment="CENTER" prefHeight="747.3333333333334" prefWidth="702.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <ImageView fx:id="imageView" pickOnBounds="true" preserveRatio="true" visible="false" />
                 <Label fx:id="alert" visible="false" />
             </HBox>
-            <VBox fx:id="uploadDialog" alignment="CENTER" layoutX="210.0" layoutY="300.0" spacing="20.0"
-                  styleClass="upload-dialog">
+            <VBox fx:id="uploadDialog" alignment="CENTER" layoutX="210.0" layoutY="300.0" spacing="20.0" styleClass="upload-dialog">
                 <Label contentDisplay="CENTER" styleClass="upload-text" text="Upload your image here">
                 </Label>
-                <Button mnemonicParsing="false" onAction="#openImageAction" prefWidth="90.0" styleClass="upload-button"
-                        text="Open">
+                <Button mnemonicParsing="false" onAction="#openImageAction" prefWidth="90.0" styleClass="upload-button" text="Open">
                     <cursor>
-                        <Cursor fx:constant="DEFAULT"/>
+                        <Cursor fx:constant="DEFAULT" />
                     </cursor>
                 </Button>
             </VBox>
@@ -45,50 +37,47 @@
 
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="right-window">
-            <SplitPane dividerPositions="0.24682395644283125" maxHeight="1.7976931348623157E308"
-                       maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="760.0"
-                       prefWidth="290.6666666666667" styleClass="right-split-pane" AnchorPane.bottomAnchor="0.0"
-                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.24682395644283125" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="760.0" prefWidth="290.6666666666667" styleClass="right-split-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <AnchorPane styleClass="top-right-window">
-                    <TitledPane alignment="CENTER" animated="false" collapsible="false" prefHeight="204.66666666666666"
-                                prefWidth="288.6666666666667" styleClass="title-pane-property" text="Image Properties"
-                                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                AnchorPane.topAnchor="0.0">
-                        <VBox prefHeight="255.0" prefWidth="287.0" styleClass="title-pane-content">
-                            <TextFlow fx:id="imageProperties" prefHeight="200.0" prefWidth="200.0"/>
-                        </VBox>
-                    </TitledPane>
+                    <VBox alignment="TOP_CENTER" prefHeight="183.33333333333334" prefWidth="290.6666666666667" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Label alignment="CENTER" text="Image Properties">
+                            <padding>
+                                <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                            </padding>
+                        </Label>
+                        <TextFlow fx:id="imageProperties" prefHeight="200.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </VBox.margin></TextFlow>
+                    </VBox>
                 </AnchorPane>
-                <AnchorPane minHeight="202.0" minWidth="-Infinity" prefHeight="202.0" prefWidth="289.0"
-                            styleClass="top-bottom-window">
-                    <Accordion AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                               AnchorPane.topAnchor="0.0">
+                <AnchorPane minHeight="202.0" minWidth="-Infinity" prefHeight="202.0" prefWidth="289.0" styleClass="top-bottom-window">
+                    <Accordion AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <panes>
                             <TitledPane alignment="CENTER" animated="false" text="Format">
                                 <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.0">
                                     <RadioButton mnemonicParsing="false" styleClass="radio-button" text="JPG">
                                         <toggleGroup>
-                                            <ToggleGroup fx:id="format"/>
+                                            <ToggleGroup fx:id="format" />
                                         </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="PNG" toggleGroup="$format"/>
-                                    <RadioButton mnemonicParsing="false" text="GIF" toggleGroup="$format"/>
-                                    <RadioButton mnemonicParsing="false" text="BMP" toggleGroup="$format"/>
-                                    <RadioButton mnemonicParsing="false" text="ODD" toggleGroup="$format"/>
-                                    <RadioButton mnemonicParsing="false" text="SVG" toggleGroup="$format"/>
-                                    <RadioButton mnemonicParsing="false" text="TIFF" toggleGroup="$format"/>
+                                    <RadioButton mnemonicParsing="false" text="PNG" toggleGroup="$format" />
+                                    <RadioButton mnemonicParsing="false" text="GIF" toggleGroup="$format" />
+                                    <RadioButton mnemonicParsing="false" text="BMP" toggleGroup="$format" />
+                                    <RadioButton mnemonicParsing="false" text="ODD" toggleGroup="$format" />
+                                    <RadioButton mnemonicParsing="false" text="SVG" toggleGroup="$format" />
+                                    <RadioButton mnemonicParsing="false" text="TIFF" toggleGroup="$format" />
                                 </VBox>
                             </TitledPane>
                             <TitledPane alignment="CENTER" animated="false" text="Filter">
-                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.0"
-                                      styleClass="title-pane-content">
+                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.0" styleClass="title-pane-content">
                                     <RadioButton mnemonicParsing="false" text="Filter 1">
                                         <toggleGroup>
-                                            <ToggleGroup fx:id="filter"/>
+                                            <ToggleGroup fx:id="filter" />
                                         </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Filter 2" toggleGroup="$filter"/>
-                                    <RadioButton mnemonicParsing="false" text="Filter 3" toggleGroup="$filter"/>
+                                    <RadioButton mnemonicParsing="false" text="Filter 2" toggleGroup="$filter" />
+                                    <RadioButton mnemonicParsing="false" text="Filter 3" toggleGroup="$filter" />
                                 </VBox>
                             </TitledPane>
                         </panes>
