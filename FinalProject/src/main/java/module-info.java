@@ -12,6 +12,7 @@ module com.example.finalproject {
     requires com.almasb.fxgl.all;
     requires java.desktop;
     requires javafx.swing;
+    requires metadata.extractor;
 
     opens com.example.finalproject to javafx.fxml;
     exports com.example.finalproject;

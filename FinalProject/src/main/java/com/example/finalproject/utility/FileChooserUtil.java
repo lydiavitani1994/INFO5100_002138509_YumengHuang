@@ -1,7 +1,5 @@
 package com.example.finalproject.utility;
 
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
@@ -13,11 +11,10 @@ import java.io.IOException;
  * @author YWu97
  */
 public class FileChooserUtil {
-    public static WritableImage getImageFromFile() throws IOException {
+    public static File getFile() throws IOException {
         FileChooser fileChooser = getImageFileChooser();
         File file = fileChooser.showOpenDialog(null);
-        BufferedImage bufferedImage = ImageIO.read(file);
-        return SwingFXUtils.toFXImage(bufferedImage, null);
+        return file;
     }
 
     private static FileChooser getImageFileChooser() {

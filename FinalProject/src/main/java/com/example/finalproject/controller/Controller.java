@@ -1,27 +1,34 @@
 package com.example.finalproject.controller;
 
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.imaging.ImageProcessingException;
+import com.drew.metadata.Directory;
+import com.drew.metadata.Metadata;
+import com.drew.metadata.Tag;
 import com.example.finalproject.utility.FileChooserUtil;
 import com.example.finalproject.utility.ImageUtil;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class Controller {
     @FXML
-    public TextFlow imageProperties;
-    @FXML
     public Label alert;
     public HBox imageViewContainer;
+    public VBox imageProperties;
     @FXML
     private ToggleGroup format;
     @FXML
@@ -32,19 +39,27 @@ public class Controller {
     private ImageView imageView;
     private WritableImage image;
 
-    public void openImageAction(ActionEvent actionEvent) throws IOException {
+    public void openImageAction(ActionEvent actionEvent) throws IOException, ImageProcessingException {
         // Choose image from file
-        image = FileChooserUtil.getImageFromFile();
+        File file = FileChooserUtil.getFile();
+        BufferedImage bufferedImage = ImageIO.read(file);
+        image = SwingFXUtils.toFXImage(bufferedImage, null);
+
+        // Get image properties and display in window
+        Metadata metadata = ImageMetadataReader.readMetadata(file);
+        for (Directory directory : metadata.getDirectories()) {
+            for (Tag tag : directory.getTags()) {
+                String tagName = tag.getTagName();
+                String description = tag.getDescription();
+                imageProperties.getChildren().add(new Label(tagName + ": " + description));
+            }
+        }
 
         // Resize image to fit window
         ImageUtil.fitImage(image, imageViewContainer, imageView);
 
         // Display image in window
         imageView.setImage(image);
-
-        // TODO: Display image property in window
-        Text property = new Text(imageView.imageProperty().toString());
-        imageProperties.getChildren().add(property);
 
         // Change visibility of relative components
         imageView.setVisible(true);
