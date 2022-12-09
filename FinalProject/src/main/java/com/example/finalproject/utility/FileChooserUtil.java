@@ -13,6 +13,7 @@ import java.io.IOException;
 public class FileChooserUtil {
     public static File getFile() throws IOException {
         FileChooser fileChooser = getImageFileChooser();
+        fileChooser.setTitle("Choose Image");
         File file = fileChooser.showOpenDialog(null);
         return file;
     }
@@ -33,4 +34,12 @@ public class FileChooserUtil {
 
         return fileChooser;
     }
+
+    public static File getSaveFile() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Image");
+        File file = fileChooser.showSaveDialog(null);
+        return file;
+    }
+
 }

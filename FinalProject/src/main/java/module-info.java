@@ -13,6 +13,7 @@ module com.example.finalproject {
     requires java.desktop;
     requires javafx.swing;
     requires metadata.extractor;
+    requires thumbnailator;
 
     opens com.example.finalproject to javafx.fxml;
     exports com.example.finalproject;
