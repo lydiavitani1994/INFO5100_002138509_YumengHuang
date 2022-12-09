@@ -105,14 +105,20 @@ public class Controller {
     public void navDownloadAction(ActionEvent actionEvent) throws IOException {
         // format
         RadioButton imageFormatButton = (RadioButton) format.getSelectedToggle();
-        outputFormatName = imageFormatButton.getText();
-        if (outputFormatName.equals("original format")){
+        if(imageFormatButton == null){
             outputFormatName = inputFormatName;
+        }else{
+            outputFormatName = imageFormatButton.getText();
+            if (outputFormatName.equals("original format")){
+                outputFormatName = inputFormatName;
+            }
         }
         // size
         RadioButton imageSizeButton = (RadioButton) size.getSelectedToggle();
-        String sizeValue = imageSizeButton.getText();
-
+        String sizeValue = "original size";
+        if(imageSizeButton != null){
+            sizeValue = imageSizeButton.getText();
+        }
         if (sizeValue.equals("original size")) {
             outputImageWidth = inputImageWidth;
             outputImageHeight = inputImageHeight;
