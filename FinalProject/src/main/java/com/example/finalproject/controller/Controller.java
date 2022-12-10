@@ -139,7 +139,7 @@ public class Controller {
 //        BufferedImage scaledBI = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
         changeSize();
         // download
-        File writeFile = FileChooserUtil.getSaveFile();
+        File writeFile = FileChooserUtil.getSaveFile(outputFormatName);
         ImageIO.write(outputBufferedImage, outputFormatName, writeFile);
     }
 
