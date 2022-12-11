@@ -1,100 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="body" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalproject.controller.Controller">
-    <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="1000.0" spacing="20.0" styleClass="nav">
-        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openImageAction" prefWidth="90.0" styleClass="nav-open-button" text="Open">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1000.0" styleClass="body" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.finalproject.controller.Controller">
+    <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="1000.0" spacing="20.0" styleClass="nav">
+        <Button mnemonicParsing="false" prefWidth="100.0" text="Delete All" onAction="#deleteAllImagesAction"/>
+        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addImageAction"
+                prefWidth="100.0" styleClass="nav-open-button" text="Add Image">
         </Button>
-        <Button alignment="CENTER" mnemonicParsing="false" onAction="#navDownloadAction" prefWidth="90.0" styleClass="nav-download-button" text="Download">
+        <Button alignment="CENTER" mnemonicParsing="false" onAction="#downloadAllAction" prefWidth="100.0"
+                styleClass="nav-download-button" text="Download All">
         </Button>
+        <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+        </padding>
     </HBox>
-    <SplitPane dividerPositions="0.7052139037433156" layoutY="50.0" prefHeight="750.0" prefWidth="1000.0" styleClass="main">
-        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefWidth="650.0" styleClass="left-window">
-            <HBox fx:id="imageViewContainer" alignment="CENTER" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <ImageView fx:id="imageView" pickOnBounds="true" preserveRatio="true" visible="false" />
-                <Label fx:id="alert" visible="false" />
-            </HBox>
-            <VBox fx:id="uploadDialog" alignment="CENTER" layoutX="210.0" layoutY="300.0" spacing="20.0" styleClass="upload-dialog">
+    <VBox layoutY="49.0" prefHeight="751.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0"/>
+    <AnchorPane layoutY="50.0" prefHeight="750.0" prefWidth="1000.0">
+        <children>
+            <VBox fx:id="uploadDialog" alignment="CENTER" spacing="20.0" styleClass="upload-dialog"
+                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                  AnchorPane.topAnchor="0.0">
                 <Label contentDisplay="CENTER" styleClass="upload-text" text="Upload your image here">
                 </Label>
-                <Button mnemonicParsing="false" onAction="#openImageAction" prefWidth="90.0" styleClass="upload-button" text="Open">
+                <Button mnemonicParsing="false" onAction="#addImageAction" prefWidth="100.0" styleClass="upload-button"
+                        text="Add Image">
                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="DEFAULT"/>
                     </cursor>
                 </Button>
             </VBox>
-<!--            <HBox alignment="CENTER" fx:id="optionButtons" visible="true">-->
-<!--                <Button text="Zoom in" onAction="#zoomIn" />-->
-<!--                <Button text="Reset" onAction="#reset" />-->
-<!--                <Button text="Zoom out" onAction="#zoomOut" />-->
-<!--            </HBox>-->
-
-        </AnchorPane>
-        <AnchorPane minWidth="0.0" styleClass="right-window">
-            <SplitPane dividerPositions="0.24682395644283125" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="500.0" styleClass="right-split-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <AnchorPane prefHeight="500.0" styleClass="top-right-window">
-                    <VBox alignment="TOP_CENTER" minHeight="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <Label alignment="CENTER" text="Image Properties">
-                            <padding>
-                                <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                            </padding>
-                        </Label>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="400.0">
-                     <content>
-                        <VBox fx:id="imageProperties" prefWidth="300.0" spacing="2.0" style="-fx-background-color: #ebefe2;" />
-                     </content>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </ScrollPane>
-                     <VBox.margin>
-                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-                     </VBox.margin>
-                    </VBox>
-                </AnchorPane>
-                <AnchorPane minHeight="-Infinity" minWidth="-Infinity" styleClass="top-bottom-window">
-                    <Accordion layoutY="87.0" prefHeight="442.0" prefWidth="291.3333333333333" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <panes>
-                            <TitledPane alignment="CENTER" animated="false" prefWidth="291.0" text="Download Format">
-                                <VBox spacing="6.0">
-                                    <RadioButton mnemonicParsing="false" styleClass="radio-button" text="original format">
-                                        <toggleGroup>
-                                            <ToggleGroup fx:id="format" />
-                                        </toggleGroup>
-                                    </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="JPG" toggleGroup="$format" />
-                                    <RadioButton mnemonicParsing="false" text="PNG" toggleGroup="$format" />
-                                    <RadioButton mnemonicParsing="false" text="GIF" toggleGroup="$format" />
-                                    <RadioButton mnemonicParsing="false" text="BMP" toggleGroup="$format" />
-                                    <RadioButton mnemonicParsing="false" text="ODD" toggleGroup="$format" />
-                                    <RadioButton mnemonicParsing="false" text="SVG" toggleGroup="$format" />
-                                    <RadioButton mnemonicParsing="false" text="TIFF" toggleGroup="$format" />
-                                </VBox>
-                            </TitledPane>
-                            <TitledPane alignment="CENTER" animated="false" text="Download Size">
-                                <VBox spacing="6.0" styleClass="title-pane-content">
-                                    <RadioButton mnemonicParsing="false" text="original size">
-                                        <toggleGroup>
-                                            <ToggleGroup fx:id="size" />
-                                        </toggleGroup>
-                                    </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="100px wide * 100px high" toggleGroup="$size" />
-                                    <RadioButton mnemonicParsing="false" text="360px wide * 360px high" toggleGroup="$size" />
-                                    <RadioButton mnemonicParsing="false" text="820px wide * 312px high" toggleGroup="$size" />
-                                </VBox>
-                        <rotationAxis>
-                           <Point3D />
-                        </rotationAxis>
-                            </TitledPane>
-                        </panes>
-                    </Accordion>
-                </AnchorPane>
-            </SplitPane>
-        </AnchorPane>
-    </SplitPane>
+            <ScrollPane fx:id="imageViewScrollPane" hbarPolicy="NEVER" visible="false" AnchorPane.bottomAnchor="0.0"
+                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <content>
+                    <VBox fx:id="imageViewContainer" prefHeight="750.0" prefWidth="1000.0"/>
+                </content>
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+            </ScrollPane>
+        </children>
+    </AnchorPane>
 </AnchorPane>

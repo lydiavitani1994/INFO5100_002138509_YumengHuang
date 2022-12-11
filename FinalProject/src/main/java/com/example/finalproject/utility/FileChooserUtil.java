@@ -6,19 +6,20 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author YWu97
  */
 public class FileChooserUtil {
-    public static File getFile() throws IOException {
+    public static List<File> getFiles() throws IOException {
         FileChooser fileChooser = getImageFileChooser();
-        fileChooser.setTitle("Choose Image");
-        File file = fileChooser.showOpenDialog(null);
-        return file;
+        fileChooser.setTitle("Choose Images");
+        List<File> files = fileChooser.showOpenMultipleDialog(null);
+        return files;
     }
 
-    private static FileChooser getImageFileChooser() {
+    public static FileChooser getImageFileChooser() {
         FileChooser fileChooser = new javafx.stage.FileChooser();
 
         FileChooser.ExtensionFilter extFilterJpg = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG", "*.JPEG");
@@ -29,7 +30,7 @@ public class FileChooserUtil {
         FileChooser.ExtensionFilter extFilterTif = new FileChooser.ExtensionFilter("TIF files (*.tif)", "*.TIF");
         FileChooser.ExtensionFilter extFilterTiff = new FileChooser.ExtensionFilter("TIFF files (*.tiff)", "*.TIFF");
 
-        fileChooser.setTitle("Please choose your image.");
+        fileChooser.setTitle("Please choose your images.");
         fileChooser.getExtensionFilters().addAll(extFilterJpg, extFilterPng, extFilterJpeg, extFilterSvg, extFilterBmp, extFilterTif, extFilterTiff);
 
         return fileChooser;

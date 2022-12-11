@@ -1,43 +1,37 @@
 package com.example.finalproject.controller;
 
-import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
-import com.drew.metadata.Directory;
-import com.drew.metadata.Metadata;
-import com.drew.metadata.Tag;
-
+import com.example.finalproject.component.Image;
+import com.example.finalproject.component.ImageList;
 import com.example.finalproject.utility.FileChooserUtil;
-import com.example.finalproject.utility.ImageUtil;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import net.coobird.thumbnailator.Thumbnails;
 
 import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-import javax.imageio.stream.ImageInputStream;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.List;
 
 public class Controller {
+    private final List<String> supportedFormats = Arrays.asList("JPG", "JPEG", "PNG", "SVG", "BMP", "TIF", "TIFF");
+    private final List<String> outputSizes = Arrays.asList("Original Size", "100px wide * 100px high", "360px wide * 360px high", "820px wide * 312px high");
     @FXML
-    public Label alert;
-    public HBox imageViewContainer;
     public VBox imageProperties;
+    public VBox imageViewContainer;
+    public ScrollPane imageViewScrollPane;
+    ImageList imageList = new ImageList();
     @FXML
     private ToggleGroup format;
     @FXML
@@ -45,78 +39,140 @@ public class Controller {
     @FXML
     private VBox uploadDialog;
     @FXML
-    private ImageView imageView;
-    private WritableImage image;
-
     private int inputImageWidth;
     private int inputImageHeight;
     private int outputImageWidth;
     private int outputImageHeight;
     private String inputFormatName;
     private String outputFormatName;
+    private List<File> files;
+    private BufferedImage outputBufferedImage;
     private BufferedImage inputBufferedImage;
 
-    private BufferedImage outputBufferedImage;
+    public void addImageAction() throws IOException, ImageProcessingException {
+        // Add image from file and add into imageList
+        files = FileChooserUtil.getFiles();
+        imageList.addMultipleImages(files);
 
-    public void openImageAction(ActionEvent actionEvent) throws IOException, ImageProcessingException {
-        // Choose image from file
-        File file = FileChooserUtil.getFile();
-        inputBufferedImage = ImageIO.read(file);
-        inputImageWidth = inputBufferedImage.getWidth();
-        inputImageHeight = inputBufferedImage.getHeight();
-        long imageSize = file.length();
-        ImageInputStream iis = ImageIO.createImageInputStream(file);
-        Iterator<ImageReader> iter = ImageIO.getImageReaders(iis);
-        if (! iter.hasNext()) {
-            throw new RuntimeException("No readers found!");
-        }
-        ImageReader reader = iter.next();
-        inputFormatName = reader.getFormatName();
+        // Create UI components for image files
+        if (imageList.getNumberOfImages() > 0) {
+            // Visibility setting of relative components
+            imageViewScrollPane.setVisible(true);
+            uploadDialog.setVisible(false);
 
-        System.out.println("image_width"+inputImageWidth);
-        System.out.println("image_height"+inputImageHeight);
-        System.out.println("image_size"+ imageSize);
-        System.out.println("image_format"+inputFormatName);
+            for (Image image : imageList.getImageList()) {
+                // Create panel for each image file
+                HBox hbox = new HBox();
+                hbox.setPrefSize(800, 150);
+                hbox.setPadding(new Insets(10, 10, 10, 10));
+                hbox.setSpacing(10);
 
-        image = SwingFXUtils.toFXImage(inputBufferedImage, null);
+                // Set the fx:id of panel same as the image id it contains
+                hbox.setId(String.valueOf(image.getId()));
 
-        // Get image properties and display in window
-        Metadata metadata = ImageMetadataReader.readMetadata(file);
-        for (Directory directory : metadata.getDirectories()) {
-            for (Tag tag : directory.getTags()) {
-                String tagName = tag.getTagName();
-                String description = tag.getDescription();
-                imageProperties.getChildren().add(new Label(tagName + ": " + description));
+                // Add thumbnail component to the panel
+                ImageView thumbNail = new ImageView();
+                thumbNail.setFitHeight(100);
+                thumbNail.setFitWidth(100);
+                thumbNail.setImage(image.getFXImage());
+
+                // Add image information and display in panel
+                VBox imageProperties = new VBox();
+                imageProperties.setPrefSize(350, 150);
+                imageProperties.setSpacing(5);
+                imageProperties.getChildren().add(new Label("Name" + ": " + image.getFileName()));
+                imageProperties.getChildren().add(new Label("Type" + ": " + image.getFileType()));
+                imageProperties.getChildren().add(new Label("Size" + ": " + image.getFileSize()));
+                imageProperties.getChildren().add(new Label("Height" + ": " + image.getFileHeight()));
+                imageProperties.getChildren().add(new Label("Width" + ": " + image.getFileWidth()));
+
+                // Add choice box for formats
+                ChoiceBox<String> formats = new ChoiceBox<>();
+                formats.setPrefWidth(100);
+                for (String format : supportedFormats) {
+                    formats.getItems().add(format);
+                }
+                formats.setValue(supportedFormats.get(0));
+                // TODO: format configuration
+
+                // Add choice box for output sizes
+                ChoiceBox<String> sizes = new ChoiceBox<>();
+                sizes.setPrefWidth(150);
+                for (String size : outputSizes) {
+                    sizes.getItems().add(size);
+                }
+                sizes.setValue(outputSizes.get(0));
+                // TODO: size configuration
+
+                // Add download and delete button for each image in panel
+                Button deleteBtn = new Button("Delete");
+                deleteBtn.setPrefWidth(90);
+                deleteBtn.setOnAction(event -> {
+                    // Get the parent node and its fx:id
+                    Node target = (Node) event.getTarget();
+                    Node parent = target.getParent();
+                    String IdToDelete = parent.getId();
+
+                    // Delete respective image in the imageList with fx:id
+                    imageList.deleteImage(Integer.parseInt(IdToDelete));
+
+                    // Delete respective panel
+                    imageViewContainer.getChildren().remove(parent);
+
+                });
+
+                // Add download button for each image in panel
+                Button downloadBtn = new Button("Download");
+                downloadBtn.setPrefWidth(90);
+                // TODO: setOnAction to download a specific image
+
+                // Append all child nodes to parent node
+                hbox.getChildren().add(thumbNail);
+                hbox.getChildren().add(imageProperties);
+                hbox.getChildren().add(formats);
+                hbox.getChildren().add(sizes);
+                hbox.getChildren().add(deleteBtn);
+                hbox.getChildren().add(downloadBtn);
+                imageViewContainer.getChildren().add(hbox);
             }
+
         }
 
-        // Resize image to fit window
-        ImageUtil.fitImage(image, imageViewContainer, imageView);
-
-        // Display image in window
-        imageView.setImage(image);
-
-        // Change visibility of relative components
-        imageView.setVisible(true);
-        uploadDialog.setVisible(false);
+        // TODO: 根据你的需要看看需要调整哪些
+//        inputBufferedImage = ImageIO.read(file);
+//        inputImageWidth = inputBufferedImage.getWidth();
+//        inputImageHeight = inputBufferedImage.getHeight();
+//        long imageSize = file.length();
+//        ImageInputStream iis = ImageIO.createImageInputStream(file);
+//        Iterator<ImageReader> iter = ImageIO.getImageReaders(iis);
+//        if (!iter.hasNext()) {
+//            throw new RuntimeException("No readers found!");
+//        }
+//        ImageReader reader = iter.next();
+//        inputFormatName = reader.getFormatName();
+//
+//        System.out.println("image_width" + inputImageWidth);
+//        System.out.println("image_height" + inputImageHeight);
+//        System.out.println("image_size" + imageSize);
+//        System.out.println("image_format" + inputFormatName);
     }
 
     // image format & size converter
-    public void navDownloadAction(ActionEvent actionEvent) throws IOException {
+    public void downloadAllAction(ActionEvent actionEvent) throws IOException {
         // format
         RadioButton imageFormatButton = (RadioButton) format.getSelectedToggle();
-        if(imageFormatButton == null){
+        if (imageFormatButton == null) {
             outputFormatName = inputFormatName;
-        }else{
+        } else {
             outputFormatName = imageFormatButton.getText();
-            if (outputFormatName.equals("original format")){
+            if (outputFormatName.equals("original format")) {
                 outputFormatName = inputFormatName;
             }
         }
         // size
         RadioButton imageSizeButton = (RadioButton) size.getSelectedToggle();
         String sizeValue = "original size";
-        if(imageSizeButton != null){
+        if (imageSizeButton != null) {
             sizeValue = imageSizeButton.getText();
         }
         if (sizeValue.equals("original size")) {
@@ -163,13 +219,11 @@ public class Controller {
 //        outputBufferedImage =  ImageIO.read(byteArrayInputStream);
     }
 
-//    // TODO: image zoom in / out, reset (TBD)
-//    public void zoomIn(ActionEvent actionEvent) {
-//    }
-//
-//    public void reset(ActionEvent actionEvent) {
-//    }
-//
-//    public void zoomOut(ActionEvent actionEvent) {
-//    }
+    public void deleteAllImagesAction() {
+        // Delete items in imageList
+        imageList.deleteAllImages();
+
+        // Delete panels in imageViewContainer
+        imageViewContainer.getChildren().clear();
+    }
 }
