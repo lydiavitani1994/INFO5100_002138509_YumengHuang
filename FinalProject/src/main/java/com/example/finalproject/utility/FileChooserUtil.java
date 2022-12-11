@@ -22,7 +22,8 @@ public class FileChooserUtil {
     public static FileChooser getImageFileChooser() {
         FileChooser fileChooser = new javafx.stage.FileChooser();
 
-        FileChooser.ExtensionFilter extFilterJpg = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG", "*.JPEG");
+        FileChooser.ExtensionFilter extFilterAll = new FileChooser.ExtensionFilter("All Supported Image Formats", "*.JPG", "*.JPEG", "*.PNG", "*.SVG", "*.BMP", "*.TIF", "*.TIFF");
+        FileChooser.ExtensionFilter extFilterJpg = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
         FileChooser.ExtensionFilter extFilterPng = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
         FileChooser.ExtensionFilter extFilterJpeg = new FileChooser.ExtensionFilter("JPEG files (*.jpeg)", "*.JPEG");
         FileChooser.ExtensionFilter extFilterSvg = new FileChooser.ExtensionFilter("SVG files (*.svg)", "*.SVG");
@@ -31,7 +32,7 @@ public class FileChooserUtil {
         FileChooser.ExtensionFilter extFilterTiff = new FileChooser.ExtensionFilter("TIFF files (*.tiff)", "*.TIFF");
 
         fileChooser.setTitle("Please choose your images.");
-        fileChooser.getExtensionFilters().addAll(extFilterJpg, extFilterPng, extFilterJpeg, extFilterSvg, extFilterBmp, extFilterTif, extFilterTiff);
+        fileChooser.getExtensionFilters().addAll(extFilterAll, extFilterJpg, extFilterPng, extFilterJpeg, extFilterSvg, extFilterBmp, extFilterTif, extFilterTiff);
 
         return fileChooser;
     }
