@@ -40,12 +40,8 @@ public class FileChooserUtil {
     public static File getSaveFile(String formatName) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Image");
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(formatName.toUpperCase() + " files (*." + formatName+")", "*." + formatName.toUpperCase());
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(formatName.toUpperCase() + " files (*." + formatName.toLowerCase()+")", "*." + formatName.toLowerCase());
         fileChooser.getExtensionFilters().addAll(extFilter);
-
-//        fileChooser.getExtensionFilters().addAll(                                       //add filter
-//                new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", ".bmp"),  //Filters
-//                new ExtensionFilter("All Files", "*.*"));
         File file = fileChooser.showSaveDialog(null);
         return file;
     }
