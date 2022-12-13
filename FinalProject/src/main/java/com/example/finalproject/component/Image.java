@@ -147,7 +147,9 @@ public class Image {
     public void downloadSingleImage() throws IOException {
         changeSize();
         File writeFile = FileChooserUtil.getSaveFile(this.outputFormat);
-        ImageIO.write(this.outputBufferedImage, this.outputFormat, writeFile);
+        if (writeFile != null){
+            ImageIO.write(this.outputBufferedImage, this.outputFormat, writeFile);
+        }
     }
 
     public BufferedImage getOutputBufferedImage() {
