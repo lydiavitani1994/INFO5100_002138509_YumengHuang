@@ -5,44 +5,30 @@ import com.example.finalproject.component.Image;
 import com.example.finalproject.component.ImageList;
 import com.example.finalproject.utility.FileChooserUtil;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import javax.imageio.ImageIO;
-import javax.swing.event.ChangeListener;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 public class Controller {
-    private final List<String> formatList = Arrays.asList("JPG", "JPEG", "PNG", "SVG", "BMP", "TIF", "TIFF");
+    private final List<String> formatList = Arrays.asList("JPG", "JPEG", "PNG", "BMP", "TIF", "TIFF");
     private final List<String> sizeList = Arrays.asList("Original Size", "100px wide * 100px high", "360px wide * 360px high", "820px wide * 312px high");
-//    @FXML
-//    public VBox imageProperties;
     @FXML
     public VBox imageViewContainer;
     public ScrollPane imageViewScrollPane;
     ImageList imageList = new ImageList();
-//    @FXML
-//    private ToggleGroup format;
-//    @FXML
-//    private ToggleGroup size;
+    private List<File> files;
     @FXML
     private VBox uploadDialog;
-    @FXML
-    private List<File> files;
 
     public void addImageAction() throws IOException, ImageProcessingException {
         // Add image from file and add into imageList
@@ -74,9 +60,7 @@ public class Controller {
             // set output format
             image.setOutputFormat(formatList.get(0));
             formatChoiceBox.getSelectionModel().selectedIndexProperty().addListener(
-                    (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-                        image.setOutputFormat(formatList.get(new_val.intValue()));
-                    });
+                    (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> image.setOutputFormat(formatList.get(new_val.intValue())));
 
             // choice box for output sizes
             ChoiceBox<String> sizeChoiceBox = new ChoiceBox<>();
@@ -90,21 +74,11 @@ public class Controller {
             sizeChoiceBox.getSelectionModel().selectedIndexProperty().addListener(
                     (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
                         switch (sizeList.get(new_val.intValue())) {
-                            case ("Original Size"):
-                                image.setOutputSizeOriginal();
-                                break;
-                            case ("100px wide * 100px high"):
-                                image.setOutputSize(100,100);
-                                break;
-                            case ("360px wide * 360px high"):
-                                image.setOutputSize(360,360);
-                                break;
-                            case ("820px wide * 312px high"):
-                                image.setOutputSize(820,312);
-                                break;
-                            default:
-                                image.setOutputSizeOriginal();
-                                break;
+                            case ("Original Size") -> image.setOutputSizeOriginal();
+                            case ("100px wide * 100px high") -> image.setOutputSize(100, 100);
+                            case ("360px wide * 360px high") -> image.setOutputSize(360, 360);
+                            case ("820px wide * 312px high") -> image.setOutputSize(820, 312);
+                            default -> image.setOutputSizeOriginal();
                         }
                     });
 
@@ -151,7 +125,7 @@ public class Controller {
     }
 
     // image format & size converter
-    public void downloadAllAction(ActionEvent actionEvent) throws IOException {
+    public void downloadAllAction() throws IOException {
         imageList.downloadAllImages();
     }
 

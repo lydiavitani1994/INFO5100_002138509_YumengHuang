@@ -7,11 +7,9 @@ import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
 import com.example.finalproject.utility.FileChooserUtil;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import javax.imageio.ImageIO;
@@ -23,14 +21,14 @@ import java.io.IOException;
 public class Image {
     private static int identification = 0;
     private final int id;
-    private File file;
+    private final File file;
+    private final javafx.scene.image.Image FXImage;
+    private final ImageView thumbNail;
     private String imageName;
     private String imageSizeStr;
     private long imageSize;
     private BufferedImage inputBufferedImage;
     private BufferedImage outputBufferedImage;
-    private javafx.scene.image.Image FXImage;
-
     private WritableImage writableImage;
     private VBox imageProperties;
     private String inputWidthStr;
@@ -41,7 +39,6 @@ public class Image {
     private int outputHeight;
     private String inputFormat;
     private String outputFormat;
-    private ImageView thumbNail;
 
     public Image(File file) throws ImageProcessingException, IOException {
         identification++;
@@ -53,26 +50,22 @@ public class Image {
                 String tagName = tag.getTagName();
                 String tagValue = tag.getDescription();
                 switch (tagName) {
-                    case ("File Name"):
-                        this.imageName = tagValue;
-                        break;
-                    case ("Detected File Type Name"):
-                        this.inputFormat = tagValue;
-                        break;
-                    case ("File Size"):
+                    case ("File Name") -> this.imageName = tagValue;
+                    case ("Detected File Type Name") -> this.inputFormat = tagValue;
+                    case ("File Size") -> {
                         this.imageSizeStr = tagValue;
                         this.imageSize = Long.parseLong(tagValue.split(" ")[0]);
-                        break;
-                    case ("Image Height"):
+                    }
+                    case ("Image Height") -> {
                         this.inputHeightStr = tagValue;
                         this.inputHeight = Integer.parseInt(tagValue.split(" ")[0]);
-                        break;
-                    case ("Image Width"):
+                    }
+                    case ("Image Width") -> {
                         this.inputWidthStr = tagValue;
                         this.inputWidth = Integer.parseInt(tagValue.split(" ")[0]);
-                        break;
-                    default:
-                        break;
+                    }
+                    default -> {
+                    }
                 }
             }
         }
@@ -110,16 +103,12 @@ public class Image {
         return this.inputFormat;
     }
 
-    public void setOutputFormat(String outputFormat) {
-        this.outputFormat = outputFormat;
-    }
-
-    public void setOutputSizeOriginal(){
+    public void setOutputSizeOriginal() {
         this.outputHeight = this.inputHeight;
         this.outputWidth = this.inputWidth;
     }
 
-    public void setOutputSize(int outputWidth, int outputHeight){
+    public void setOutputSize(int outputWidth, int outputHeight) {
         this.outputWidth = outputWidth;
         this.outputHeight = outputHeight;
     }
@@ -147,7 +136,7 @@ public class Image {
     public void downloadSingleImage() throws IOException {
         changeSize();
         File writeFile = FileChooserUtil.getSaveFile(this.outputFormat);
-        if (writeFile != null){
+        if (writeFile != null) {
             ImageIO.write(this.outputBufferedImage, this.outputFormat, writeFile);
         }
     }
@@ -160,8 +149,12 @@ public class Image {
         return this.outputFormat;
     }
 
+    public void setOutputFormat(String outputFormat) {
+        this.outputFormat = outputFormat;
+    }
+
     public String getZipName() {
-        return this.id  + "." + this.outputFormat.toLowerCase();
+        return this.id + "." + this.outputFormat.toLowerCase();
     }
 
 }

@@ -17,10 +17,6 @@ public class ImageList {
         imageList = new ArrayList<>();
     }
 
-    public List<Image> getImageList() {
-        return imageList;
-    }
-
     public Integer getNumberOfImages() {
         return imageList.size();
     }
