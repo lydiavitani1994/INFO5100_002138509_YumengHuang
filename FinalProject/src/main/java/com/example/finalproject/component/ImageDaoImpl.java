@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-public class ImageList {
+public class ImageDaoImpl implements ImageDao {
     private List<Image> imageList;
 
-    public ImageList() {
+    public ImageDaoImpl() {
         imageList = new ArrayList<>();
     }
 
@@ -21,7 +21,7 @@ public class ImageList {
         return imageList.size();
     }
 
-    public void addImage(Image image) {
+    public void addSingleImage(Image image) {
         this.imageList.add(image);
     }
 
@@ -39,12 +39,20 @@ public class ImageList {
         return newList;
     }
 
-    public void deleteImage(Integer targetId) {
+    public void deleteSingleImage(Integer targetId) {
         imageList.removeIf(value -> value.getId() == targetId);
     }
 
     public void deleteAllImages() {
         imageList.clear();
+    }
+
+    public void downloadSingleImage() throws IOException {
+        changeSize();
+        File writeFile = FileChooserUtil.getSaveFile(this.outputFormat);
+        if (writeFile != null) {
+            ImageIO.write(this.outputBufferedImage, this.outputFormat, writeFile);
+        }
     }
 
     public void downloadAllImages() throws IOException {
