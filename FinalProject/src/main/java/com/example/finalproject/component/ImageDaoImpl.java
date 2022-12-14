@@ -4,7 +4,10 @@ import com.drew.imaging.ImageProcessingException;
 import com.example.finalproject.utility.FileChooserUtil;
 
 import javax.imageio.ImageIO;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -33,7 +36,7 @@ public class ImageDaoImpl implements ImageDao {
         List<Image> newList = new ArrayList<>();
         for (File file : files) {
             Image image = new Image(file);
-            addImage(image);
+            addSingleImage(image);
             newList.add(image);
         }
         return newList;
@@ -47,21 +50,33 @@ public class ImageDaoImpl implements ImageDao {
         imageList.clear();
     }
 
-    public void downloadSingleImage() throws IOException {
-        changeSize();
-        File writeFile = FileChooserUtil.getSaveFile(this.outputFormat);
-        if (writeFile != null) {
-            ImageIO.write(this.outputBufferedImage, this.outputFormat, writeFile);
+    public void downloadSingleImage(Integer targetId) throws IOException {
+        Image targetImage = null;
+
+        for (Image image : imageList) {
+            if (image.getId() == targetId) {
+                targetImage = image;
+            }
+        }
+
+        if (targetImage != null) {
+            targetImage.changeSize();
+            File writeFile = FileChooserUtil.getSaveFile(targetImage.getOutputFormat());
+            if (writeFile != null) {
+                ImageIO.write(targetImage.getOutputBufferedImage(), targetImage.getOutputFormat(), writeFile);
+            }
+        } else {
+            System.out.println("no target");
         }
     }
 
     public void downloadAllImages() throws IOException {
         File writeZipFile = FileChooserUtil.getSaveFile("ZIP");
-        if (writeZipFile != null){
+        if (writeZipFile != null) {
             ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(writeZipFile));
             FileOutputStream fos = new FileOutputStream(writeZipFile);
 
-            for(Image image: this.imageList){
+            for (Image image : imageList) {
                 image.changeSize();
                 File outputImageFile = new File(image.getZipName());
                 ImageIO.write(image.getOutputBufferedImage(), image.getOutputFormat(), outputImageFile);
@@ -72,7 +87,7 @@ public class ImageDaoImpl implements ImageDao {
 
                 byte[] bytes = new byte[1024];
                 int length;
-                while((length = fis.read(bytes)) >= 0) {
+                while ((length = fis.read(bytes)) >= 0) {
                     zipOutputStream.write(bytes, 0, length);
                 }
                 fis.close();
