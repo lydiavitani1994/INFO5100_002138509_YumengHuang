@@ -34,10 +34,12 @@ public class ImageDaoImpl implements ImageDao {
      */
     public List<Image> addMultipleImages(List<File> files) throws ImageProcessingException, IOException {
         List<Image> newList = new ArrayList<>();
-        for (File file : files) {
-            Image image = new Image(file);
-            addSingleImage(image);
-            newList.add(image);
+        if(files != null){
+            for (File file : files) {
+                Image image = new Image(file);
+                addSingleImage(image);
+                newList.add(image);
+            }
         }
         return newList;
     }
