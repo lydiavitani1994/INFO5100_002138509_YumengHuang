@@ -11,12 +11,9 @@ import javafx.scene.layout.VBox;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class Controller {
-    private final List<String> formatList = Arrays.asList("JPG", "JPEG", "PNG", "BMP", "TIF", "TIFF");
-    private final List<String> sizeList = Arrays.asList("Original Size", "100px wide * 100px high", "360px wide * 360px high", "820px wide * 312px high");
     @FXML
     public VBox imageViewContainer;
     public ScrollPane imageViewScrollPane;
@@ -64,7 +61,6 @@ public class Controller {
 
             imageViewContainer.getChildren().add(imagePanel.getPanel());
         }
-
     }
 
     // image format & size converter

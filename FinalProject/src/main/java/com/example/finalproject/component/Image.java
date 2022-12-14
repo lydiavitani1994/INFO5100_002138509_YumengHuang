@@ -13,15 +13,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Image {
-    private static int identification = 0;
-    private final int id;
-    private final File file;
+public class Image extends MediaFile {
     private final javafx.scene.image.Image FXImage;
     private String imageName;
-    private String imageSizeStr;
-    private long imageSize;
-    private BufferedImage inputBufferedImage;
+    private String imageSize;
+    private final BufferedImage inputBufferedImage;
     private BufferedImage outputBufferedImage;
     private String inputWidthStr;
     private int inputWidth;
@@ -33,9 +29,8 @@ public class Image {
     private String outputFormat;
 
     public Image(File file) throws ImageProcessingException, IOException {
-        identification++;
-        this.id = identification;
-        this.file = file;
+        super(file);
+
         Metadata metadata = ImageMetadataReader.readMetadata(file);
         for (Directory directory : metadata.getDirectories()) {
             for (Tag tag : directory.getTags()) {
@@ -44,10 +39,7 @@ public class Image {
                 switch (tagName) {
                     case ("File Name") -> this.imageName = tagValue;
                     case ("Detected File Type Name") -> this.inputFormat = tagValue;
-                    case ("File Size") -> {
-                        this.imageSizeStr = tagValue;
-                        this.imageSize = Long.parseLong(tagValue.split(" ")[0]);
-                    }
+                    case ("File Size") -> this.imageSize = tagValue;
                     case ("Image Height") -> {
                         this.inputHeightStr = tagValue;
                         this.inputHeight = Integer.parseInt(tagValue.split(" ")[0]);
@@ -69,12 +61,13 @@ public class Image {
         return FXImage;
     }
 
-    public String getImageName() {
+    @Override
+    public String getName() {
         return imageName;
     }
 
-    public String getImageSizeStr() {
-        return imageSizeStr;
+    public String getImageSize() {
+        return imageSize;
     }
 
     public String getInputWidthStr() {
@@ -83,18 +76,6 @@ public class Image {
 
     public String getInputHeightStr() {
         return inputHeightStr;
-    }
-
-//    public VBox getImageProperties() {
-//        return this.imageProperties;
-//    }
-//
-//    public ImageView getThumbNail() {
-//        return this.thumbNail;
-//    }
-
-    public int getId() {
-        return this.id;
     }
 
     public String getInputFormat() {
@@ -133,7 +114,6 @@ public class Image {
     }
 
     public String getZipName() {
-        return this.id + "." + this.outputFormat.toLowerCase();
+        return getId() + "." + this.outputFormat.toLowerCase();
     }
-
 }

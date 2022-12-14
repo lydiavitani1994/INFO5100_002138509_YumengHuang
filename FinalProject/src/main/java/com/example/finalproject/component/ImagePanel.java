@@ -18,10 +18,10 @@ public class ImagePanel {
     private final ImageView thumbNail;
     private final java.util.List<String> formatList = Arrays.asList("JPG", "JPEG", "PNG", "BMP", "TIF", "TIFF");
     private final List<String> sizeList = Arrays.asList("Original Size", "100px wide * 100px high", "360px wide * 360px high", "820px wide * 312px high");
-    private HBox panel;
-    private VBox imageProperties;
-    private javafx.scene.control.Button deleteBtn;
-    private javafx.scene.control.Button downloadBtn;
+    private final HBox panel;
+    private final VBox imageProperties;
+    private final javafx.scene.control.Button deleteBtn;
+    private final javafx.scene.control.Button downloadBtn;
 
     public ImagePanel(Image image) throws ImageProcessingException, IOException {
         // Create panel for each image file
@@ -31,21 +31,23 @@ public class ImagePanel {
         this.panel.setSpacing(10);
         this.panel.setId(String.valueOf(image.getId()));
 
+        // Create thumbnail
         this.thumbNail = new ImageView();
         this.thumbNail.setFitHeight(100);
         this.thumbNail.setFitWidth(100);
         this.thumbNail.setImage(image.getFXImage());
 
+        // Create Image Properties
         this.imageProperties = new VBox();
         this.imageProperties.setPrefSize(350, 150);
         this.imageProperties.setSpacing(5);
-        this.imageProperties.getChildren().add(new Label("Name: " + image.getImageName()));
+        this.imageProperties.getChildren().add(new Label("Name: " + image.getName()));
         this.imageProperties.getChildren().add(new Label("Type: " + image.getInputFormat()));
-        this.imageProperties.getChildren().add(new Label("Size: " + image.getImageSizeStr()));
+        this.imageProperties.getChildren().add(new Label("Size: " + image.getImageSize()));
         this.imageProperties.getChildren().add(new Label("Height: " + image.getInputHeightStr()));
         this.imageProperties.getChildren().add(new Label("Width: " + image.getInputWidthStr()));
 
-        // choice box for formats
+        // Choice box for formats
         ChoiceBox<String> formatChoiceBox = new ChoiceBox<>();
         formatChoiceBox.setPrefWidth(100);
         for (String format : formatList) {
@@ -53,12 +55,12 @@ public class ImagePanel {
         }
         formatChoiceBox.setValue(formatList.get(0));
 
-        // set output format
+        // Set output format
         image.setOutputFormat(formatList.get(0));
         formatChoiceBox.getSelectionModel().selectedIndexProperty().addListener(
                 (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> image.setOutputFormat(formatList.get(new_val.intValue())));
 
-        // choice box for output sizes
+        // Choice box for output sizes
         ChoiceBox<String> sizeChoiceBox = new ChoiceBox<>();
         sizeChoiceBox.setPrefWidth(150);
         for (String size : sizeList) {
@@ -66,7 +68,7 @@ public class ImagePanel {
         }
         sizeChoiceBox.setValue(sizeList.get(0));
 
-        // set output size
+        // Set output size
         image.setOutputSizeOriginal();
         sizeChoiceBox.getSelectionModel().selectedIndexProperty().addListener(
                 (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
