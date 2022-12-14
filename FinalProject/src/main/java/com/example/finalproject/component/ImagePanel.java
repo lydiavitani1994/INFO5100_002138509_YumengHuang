@@ -40,8 +40,15 @@ public class ImagePanel {
         // Create Image Properties
         this.imageProperties = new VBox();
         this.imageProperties.setPrefSize(350, 150);
-        this.imageProperties.setSpacing(5);
+        this.imageProperties.setSpacing(3);
         this.imageProperties.getChildren().add(new Label("Name: " + image.getName()));
+        if (image.getModel() != null) {
+            this.imageProperties.getChildren().add(new Label("Camera: " + image.getModel()));
+        }
+        if (image.getLatitude() != null && image.getLongitude() != null) {
+            this.imageProperties.getChildren().add(new Label("Location: LAT " + image.getLatitude() + ", LONG " + image.getLongitude()));
+        }
+
         this.imageProperties.getChildren().add(new Label("Type: " + image.getInputFormat()));
         this.imageProperties.getChildren().add(new Label("Size: " + image.getImageSize()));
         this.imageProperties.getChildren().add(new Label("Height: " + image.getInputHeightStr()));

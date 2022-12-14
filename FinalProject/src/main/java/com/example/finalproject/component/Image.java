@@ -15,9 +15,12 @@ import java.io.IOException;
 
 public class Image extends MediaFile {
     private final javafx.scene.image.Image FXImage;
-    private String imageName;
-    private String imageSize;
     private final BufferedImage inputBufferedImage;
+    private String imageName;
+    private String model;
+    private String imageSize;
+    private String longitude;
+    private String latitude;
     private BufferedImage outputBufferedImage;
     private String inputWidthStr;
     private int inputWidth;
@@ -40,6 +43,15 @@ public class Image extends MediaFile {
                     case ("File Name") -> this.imageName = tagValue;
                     case ("Detected File Type Name") -> this.inputFormat = tagValue;
                     case ("File Size") -> this.imageSize = tagValue;
+                    case ("Model") -> {
+                        this.model = tagValue;
+                    }
+                    case ("GPS Longitude") -> {
+                        this.longitude = tagValue;
+                    }
+                    case ("GPS Latitude") -> {
+                        this.latitude = tagValue;
+                    }
                     case ("Image Height") -> {
                         this.inputHeightStr = tagValue;
                         this.inputHeight = Integer.parseInt(tagValue.split(" ")[0]);
@@ -55,6 +67,18 @@ public class Image extends MediaFile {
         }
         this.inputBufferedImage = ImageIO.read(file);
         this.FXImage = SwingFXUtils.toFXImage(inputBufferedImage, null);
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getModel() {
+        return model;
     }
 
     public javafx.scene.image.Image getFXImage() {
