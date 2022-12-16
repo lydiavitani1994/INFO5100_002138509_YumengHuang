@@ -67,6 +67,7 @@ public class ImageDaoImpl implements ImageDao {
             if (writeFile != null) {
                 ImageIO.write(targetImage.getOutputBufferedImage(), targetImage.getOutputFormat(), writeFile);
             }
+//            writeFile.delete();
         } else {
             System.out.println("no target");
         }
@@ -93,6 +94,7 @@ public class ImageDaoImpl implements ImageDao {
                     zipOutputStream.write(bytes, 0, length);
                 }
                 fis.close();
+                outputImageFile.delete();
 
             }
             zipOutputStream.close();

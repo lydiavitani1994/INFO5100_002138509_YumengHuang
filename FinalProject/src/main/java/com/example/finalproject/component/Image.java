@@ -54,11 +54,20 @@ public class Image extends MediaFile {
                     }
                     case ("Image Height") -> {
                         this.inputHeightStr = tagValue;
-                        this.inputHeight = Integer.parseInt(tagValue.split(" ")[0]);
+                        if (tagValue.contains("pixels")){
+                            this.inputHeight = Integer.parseInt(tagValue.split(" ")[0]);
+                        }else{
+                            this.inputHeight = Integer.parseInt(tagValue);
+                        }
                     }
                     case ("Image Width") -> {
                         this.inputWidthStr = tagValue;
-                        this.inputWidth = Integer.parseInt(tagValue.split(" ")[0]);
+                        if (tagValue.contains("pixels")){
+                            this.inputWidth = Integer.parseInt(tagValue.split(" ")[0]);
+                        }else{
+                            this.inputWidth = Integer.parseInt(tagValue);
+                        }
+
                     }
                     default -> {
                     }
@@ -118,6 +127,7 @@ public class Image extends MediaFile {
 
     public void changeSize() throws IOException {
         // creates output image
+        System.out.println(this.outputWidth +" "+ this.outputHeight);
         this.outputBufferedImage = new BufferedImage(this.outputWidth, this.outputHeight, this.inputBufferedImage.getType());
         // scales the input image to the output image
         Graphics2D g2d = this.outputBufferedImage.createGraphics();
